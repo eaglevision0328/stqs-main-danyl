@@ -1,0 +1,38 @@
+#root {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+blockquote {
+  background-color: aquamarine;
+  font-weight: 600;
+}
+
+.nav {
+  width: 30%;
+  padding: 20px; 
+  background: #0d1117; 
+  color: white;
+}
+
+.content {
+  width: 70%;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: yellow;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
