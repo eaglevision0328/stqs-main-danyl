@@ -1,10 +1,10 @@
 import { it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import NewGame from "./quickstart/newgame/NewGame";
-import * as api from "./api";
+import NewGame from "../quickstart/newgame/NewGame";
+import * as api from "../api";
 
-vi.mock("./api", () => ({
+vi.mock("../api", () => ({
   registerAgent: vi.fn(),
   fetchAgentDetails: vi.fn(),
   fetchStartingLocation: vi.fn(),
@@ -82,7 +82,7 @@ it("handles expired session and clears token", async () => {
     );
 
     await waitFor(() => expect(api.clearToken).toHaveBeenCalled());
-    await waitFor(() => expect(screen.getByText("Session expired. Please re-register.")).toBeInTheDocument());
+    expect(await screen.findByText("Session expired. Please re-register.")).toBeInTheDocument();
 });
 
 it("clears agent data when reset button is clicked", async () => {
@@ -108,4 +108,5 @@ it("clears agent data when reset button is clicked", async () => {
     fireEvent.click(screen.getAllByText("Reset Game")[0]);
   
     expect(api.clearToken).toHaveBeenCalled();
+    expect(screen.queryByText("Symbol: TEST_AGENT")).not.toBeInTheDocument();
   });

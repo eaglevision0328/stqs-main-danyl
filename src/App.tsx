@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import NewGame from "./quickstart/newgame/NewGame";
-import FirstMission from "./quickstart/FirstMission";
-import PurchaseShip from "./quickstart/PurchaseShip";
+import FirstMission from "./quickstart/firstmission/FirstMission";
+import PurchaseShip from "./quickstart/purchaseship/PurchaseShip";
 import MineAsteroids from "./quickstart/MineAsteroids";
 import SellCargo from "./quickstart/SellCargo";
 import LastSteps from "./quickstart/LastSteps";

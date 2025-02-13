@@ -1,0 +1,93 @@
+.purchase-ship-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #ff4d4d;
+  text-align: center;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #1e1e1e;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.view-ships-btn, .buy-btn {
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.shipyard-status {
+  font-weight: bold;
+}
+
+.shipyard-status.available {
+  color: #4caf50;
+}
+
+.shipyard-status.unavailable {
+  color: #ff4d4d;
+}
+
+.ship-list {
+  margin-top: 20px;
+}
+
+.ship-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ship-price {
+  font-weight: bold;
+  color: #ffd700;
+}

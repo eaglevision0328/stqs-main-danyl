@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://api.spacetraders.io/v2";
-
+const ACCOUNT_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiY203MzU3MGRuMDAweXRjMGp4b3k0NGs0byIsInZlcnNpb24iOiJ2Mi4zLjAiLCJpYXQiOjE3Mzk0Mzk5MjgsInN1YiI6ImFjY291bnQtdG9rZW4ifQ.bcTJWlby1ytr4gDVVQN3SZs7oXHcqxbZUBxqFXwfAcldXxxlp69TxYKL3QvcK5CtOl3B8w55wtSpFzReKnmpESt0-vNzIkcGCjYnsCCVNqo9azsBPO29LKTHmPgBS7uDyTekE7rqLW9IxOtYlla3YtbCETyDlA5Fs1D6OslPSEHe2sbqeueJcHBrUOo71imQCraxioR2UlUjaPvixqN4EGOZIfqtSf9BaxQZGgQSUDLaYWNh4Vtsa4YmJbo_L2plB3ZkYMiFN6ECHhDYdelaVpNtB90B9zrx2Y0EGUKeHh8zFp3-pxk5XbXRm8TOc0JYrJuqAT9EJ9hAtZTVZHaKgw';
 // Helper to store token and expiration time
 export const saveToken = (token: string, expiresIn: number) => {
   const expiryTime = Date.now() + expiresIn * 1000; // Convert seconds to milliseconds
@@ -26,7 +26,7 @@ export const clearToken = () => {
 };
 
 // API Request Utility (reduces redundant fetch logic)
-const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
+const apiRequest = async (endpoint: string, options: RequestInit = {}, body?: object) => {
   const token = getToken();
   if (!token) throw new Error("Token expired. Please re-login.");
 
@@ -37,6 +37,7 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
       Authorization: `Bearer ${token}`,
       ...(options.headers || {}),
     },
+    body: body ? JSON.stringify(body) : undefined,
   });
 
   const data = await response.json();
@@ -49,14 +50,16 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
 export const registerAgent = async (symbol: string, faction: string) => {
   const response = await fetch(`${API_BASE_URL}/register`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json", 
+      Authorization: `Bearer ${ACCOUNT_TOKEN}` },
     body: JSON.stringify({ symbol, faction }),
   });
 
   const data = await response.json();
   if (!response.ok) throw new Error(data.error?.message || "Registration failed");
 
-  saveToken(data.data.token, 3600); // API token expires in 1 hour
+  saveToken(data.data.token, 7200); // API token expires in 1 hour
   return data.data;
 };
 
@@ -66,3 +69,23 @@ export const fetchAgentDetails = () => apiRequest("/my/agent");
 // Fetch Starting Location
 export const fetchStartingLocation = (systemSymbol: string, waypointSymbol: string) =>
   apiRequest(`/systems/${systemSymbol}/waypoints/${waypointSymbol}`);
+
+// Fetch Contracts
+export const fetchContracts = () => apiRequest("/my/contracts");
+
+// Accept Contract
+export const acceptContract = (contractId: string) =>
+  apiRequest(`/my/contracts/${contractId}/accept`, { method: "POST" });
+
+
+/****** New Ship Purchase Features 
+ * *****/
+
+export const findShipyards = (systemSymbol: string) =>
+  apiRequest(`/systems/${systemSymbol}/waypoints?traits=SHIPYARD`);
+
+export const getAvailableShips = (systemSymbol: string, shipyardWaypointSymbol: string) =>
+  apiRequest(`/systems/${systemSymbol}/waypoints/${shipyardWaypointSymbol}/shipyard`);
+
+export const purchaseShip = (shipType: string, shipyardWaypointSymbol: string) =>
+  apiRequest(`/my/ships`, { method: "POST" }, { shipType, waypointSymbol: shipyardWaypointSymbol });

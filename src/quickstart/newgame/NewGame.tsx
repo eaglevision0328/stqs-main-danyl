@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { registerAgent, fetchAgentDetails, fetchStartingLocation, getToken, clearToken } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { getAgentDetailsWithSystem } from "../../utils";
 import "./NewGame.css";
 
 /**
@@ -27,10 +28,8 @@ function NewGame() {
       }
 
       try {
-        const agentData = await fetchAgentDetails();
+        const { agentData, systemSymbol } = await getAgentDetailsWithSystem();
         setAgent(agentData);
-
-        const systemSymbol = agentData.headquarters.split("-").slice(0, 2).join("-");
         const locationData = await fetchStartingLocation(systemSymbol, agentData.headquarters);
         setLocation(locationData);
       } catch (err: any) {
@@ -50,10 +49,9 @@ function NewGame() {
     setError(null);
     try {
       const data = await registerAgent(form.symbol, form.faction);
-      const agentData = await fetchAgentDetails();
+      const { agentData, systemSymbol } = await getAgentDetailsWithSystem();
       setAgent(agentData);
-
-      const systemSymbol = agentData.headquarters.split("-").slice(0, 2).join("-");
+      
       const locationData = await fetchStartingLocation(systemSymbol, agentData.headquarters);
       setLocation(locationData);
     } catch (err: any) {
