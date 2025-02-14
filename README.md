@@ -1,5 +1,5 @@
 # STQS
-
+Danyl Goodall TEST project
 ## Goal
 Your goal is to visit [SpaceTraders.io](https://docs.spacetraders.io/quickstart/new-game) and implement as many features from the quickstart as you feel able to.
 
@@ -32,6 +32,11 @@ NPM
 `npm ci`
 `npm run dev`
 See `package.json` for more details on available scripts.
+
+## Testing
+
+`npm run test`
+
 
 ## Exercise
 
