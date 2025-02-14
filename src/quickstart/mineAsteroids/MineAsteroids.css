@@ -1,0 +1,30 @@
+.mine-asteroids-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+  
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px 0;
+}
+
+.result-box {
+  padding: 10px 20px;
+  background: #222629;
+}
+
+.status {
+  font-size: 18px;
+  margin: 10px 0;
+}

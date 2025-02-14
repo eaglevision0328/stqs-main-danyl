@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import PurchaseShip from "../quickstart/purchaseship/PurchaseShip";
 import * as api from "../api";
 import * as utils from "../utils";
+import { ShipProvider } from "../context/ShipContext";
 
 // Mock API module properly using `vi.mock`
 vi.mock("../api", () => ({
@@ -34,7 +35,9 @@ beforeEach(() => {
 
   utilsRender = render(
     <MemoryRouter>
-      <PurchaseShip />
+      <ShipProvider>
+        <PurchaseShip />
+      </ShipProvider>
     </MemoryRouter>
   );
 });

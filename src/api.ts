@@ -78,8 +78,11 @@ export const acceptContract = (contractId: string) =>
   apiRequest(`/my/contracts/${contractId}/accept`, { method: "POST" });
 
 
-/****** New Ship Purchase Features 
- * *****/
+/******
+ *** 
+    New Ship Purchase Features 
+ ***
+ ******/
 
 export const findShipyards = (systemSymbol: string) =>
   apiRequest(`/systems/${systemSymbol}/waypoints?traits=SHIPYARD`);
@@ -89,3 +92,41 @@ export const getAvailableShips = (systemSymbol: string, shipyardWaypointSymbol: 
 
 export const purchaseShip = (shipType: string, shipyardWaypointSymbol: string) =>
   apiRequest(`/my/ships`, { method: "POST" }, { shipType, waypointSymbol: shipyardWaypointSymbol });
+
+/******
+ *** 
+    Mine Asteroids Features 
+ ***
+ ******/
+
+// Find engineered asteroid
+export const findEngineeredAsteroid = (systemSymbol: string) =>
+  apiRequest(`/systems/${systemSymbol}/waypoints?type=ENGINEERED_ASTEROID`);
+
+// Set ship to orbit mode
+export const setShipToOrbit = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/orbit`, { method: "POST" });
+
+// Navigate ship to asteroid
+export const navigateToAsteroid = (shipSymbol: string, waypointSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/navigate`, { method: "POST" }, { waypointSymbol });
+
+// Dock ship at asteroid
+export const dockShip = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/dock`, { method: "POST" });
+
+// Refuel ship
+export const refuelShip = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/refuel`, { method: "POST" });
+
+// Extract ores
+export const extractOres = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/extract`, { method: "POST" });
+
+// Jettison ores
+// export const jettisonShip = (shipSymbol: string, symbol: string, units: string) =>
+//   apiRequest(`/my/ships/${shipSymbol}/jettison`, { method: "POST" }, {symbol, units});
+
+// Cargo ores
+export const cargoShip = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/cargo`, { method: "POST" });

@@ -3,6 +3,7 @@ import { findShipyards, getAvailableShips, purchaseShip } from "../../api";
 import { useNavigate } from "react-router-dom";
 import "./PurchaseShip.css";
 import { getAgentDetailsWithSystem } from "../../utils";
+import { useShip } from "../../context/ShipContext";
 import { shipsType } from "../../models/purchaseShip";
 
 const PurchaseShip = () => {
@@ -12,6 +13,7 @@ const PurchaseShip = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { setShipData } = useShip();
 
   useEffect(() => {
     const loadShipyards = async () => {
@@ -56,7 +58,14 @@ const PurchaseShip = () => {
     setLoading(true);
     setError(null);
     try {
-      await purchaseShip(shipType, selectedShipyard);
+      const purchasedShip = await purchaseShip(shipType, selectedShipyard);
+      console.log("purchasedShip===>", purchasedShip)
+      setShipData({
+        agent: purchasedShip.agent,
+        ship: purchasedShip.ship,
+        transaction: purchasedShip.transaction,
+      });
+
       alert(`Successfully purchased ${shipType}!`);
       navigate("/mine-asteroids");
     } catch (err: any) {

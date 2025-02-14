@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { registerAgent, fetchAgentDetails, fetchStartingLocation, getToken, clearToken } from "../../api";
+import { registerAgent, fetchStartingLocation, getToken, clearToken } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { getAgentDetailsWithSystem } from "../../utils";
 import "./NewGame.css";
@@ -48,10 +48,10 @@ function NewGame() {
     setLoading(true);
     setError(null);
     try {
-      const data = await registerAgent(form.symbol, form.faction);
+      await registerAgent(form.symbol, form.faction);
       const { agentData, systemSymbol } = await getAgentDetailsWithSystem();
       setAgent(agentData);
-      
+
       const locationData = await fetchStartingLocation(systemSymbol, agentData.headquarters);
       setLocation(locationData);
     } catch (err: any) {

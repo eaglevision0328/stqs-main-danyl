@@ -36,3 +36,30 @@ blockquote {
   text-decoration: underline;
 }
 
+button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #3a86ff;
+  color: white;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #265cb1;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+

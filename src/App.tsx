@@ -3,7 +3,7 @@ import "./App.css";
 import NewGame from "./quickstart/newgame/NewGame";
 import FirstMission from "./quickstart/firstmission/FirstMission";
 import PurchaseShip from "./quickstart/purchaseship/PurchaseShip";
-import MineAsteroids from "./quickstart/MineAsteroids";
+import MineAsteroids from "./quickstart/mineAsteroids/MineAsteroids";
 import SellCargo from "./quickstart/SellCargo";
 import LastSteps from "./quickstart/LastSteps";
 

@@ -13,12 +13,6 @@ h1, h2 {
   margin-bottom: 15px;
 }
 
-.error {
-  color: #ff4d4d;
-  text-align: center;
-  font-weight: bold;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -35,17 +29,6 @@ li {
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out;
-}
-
 .view-ships-btn, .buy-btn {
     padding: 8px 12px;
     background: #007bff;
@@ -54,15 +37,6 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-button:disabled {
-  background: #555;
-  cursor: not-allowed;
 }
 
 .shipyard-status {
