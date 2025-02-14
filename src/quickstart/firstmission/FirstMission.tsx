@@ -89,11 +89,11 @@ const FirstMission = () => {
             <li>Deliver ores to the designated waypoint</li>
           </ol>
           <div className="button-group">
-            <button onClick={() => navigate("/purchase-ship")}>
-              Next: PurchaseShip
-            </button>
             <button onClick={() => navigate("/")}>
               Prev: NewGame
+            </button>
+            <button onClick={() => navigate("/purchase-ship")}>
+              Next: PurchaseShip
             </button>
           </div>
         </div>

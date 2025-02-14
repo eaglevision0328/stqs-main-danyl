@@ -116,11 +116,11 @@ function NewGame() {
               <p><strong>Type:</strong> {location.type}</p>
               <p><strong>Coordinates:</strong> ({location.x}, {location.y})</p>
               <div className="button-group">
-                <button onClick={() => navigate("/first-mission")} className="register-btn">
-                  Next: First Mission
-                </button>
                 <button onClick={handleReset} className="reset-btn">
                   Reset Game
+                </button>
+                <button onClick={() => navigate("/first-mission")} className="register-btn">
+                  Next: First Mission
                 </button>
               </div>
             </div>

@@ -9,9 +9,11 @@ import {
 } from "../../api";
 import "./MineAsteroids.css";
 import { useShip } from "../../context/ShipContext";
+import { useAsteroid } from "../../context/AsteroidContext";
 
 const MineAsteroids = () => {
   const { ship_data } = useShip();
+  const { setAsteroidWaypointSymbol } = useAsteroid();
   const [status, setStatus] = useState<string>("Idle");
   const [error, setError] = useState<string | null>(null);
   const [asteroid, setAsteroid] = useState<string | null>(null);
@@ -21,7 +23,6 @@ const MineAsteroids = () => {
     if (!ship_data) {
       setError("No ship available! Please purchase a available ship first.");
     }
-    console.log("ship_data========>", ship_data)
   }, [ship_data]);
   
   const handleFindAsteroid = async () => {
@@ -36,6 +37,7 @@ const MineAsteroids = () => {
       const data = await findEngineeredAsteroid(ship_data.ship.nav.systemSymbol);
       if (data && data.length > 0) {
         setAsteroid(data[0].symbol);
+        setAsteroidWaypointSymbol(data[0].symbol);
         setStatus(`Asteroid found: ${data[0].symbol}`);
       } else {
         setStatus("No engineered asteroids found.");

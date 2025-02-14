@@ -130,3 +130,42 @@ export const extractOres = (shipSymbol: string) =>
 // Cargo ores
 export const cargoShip = (shipSymbol: string) =>
   apiRequest(`/my/ships/${shipSymbol}/cargo`, { method: "POST" });
+
+/******
+ *** 
+    Sell Cargo Features 
+ ***
+ ******/
+
+// Fetch market data for a specific asteroid waypoint
+export const fetchMarketData = (systemSymbol: string, asteroidWaypointSymbol: string) =>
+  apiRequest(`/systems/${systemSymbol}/waypoints/${asteroidWaypointSymbol}/market`);
+
+// Get ship's cargo details
+export const fetchShipCargo = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/cargo`);
+
+// Dock the ship before selling goods
+export const dockShipSell = (shipSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/dock`, { method: "POST" });
+
+// Sell cargo at the market
+export const CargoShipSell = (shipSymbol: string, units: number) =>
+  apiRequest(`/my/ships/${shipSymbol}/sell`, { method: "POST" }, { symbol: shipSymbol, units });
+
+/******
+ *** 
+    Last Step Features 
+ ***
+ ******/
+// Navigate to delivery waypoint
+export const navigateToDelivery = (shipSymbol: string, deliveryWaypointSymbol: string) =>
+  apiRequest(`/my/ships/${shipSymbol}/navigate`, { method: "POST" }, { waypointSymbol: deliveryWaypointSymbol });
+
+// Deliver contract goods
+export const deliverContractGoods = (contractId: string, shipSymbol: string, tradeSymbol: string, units: number) =>
+  apiRequest(`/my/contracts/${contractId}/deliver`, { method: "POST" }, { shipSymbol, tradeSymbol, units });
+
+// Fulfill contract
+export const fulfillContract = (contractId: string) =>
+  apiRequest(`/my/contracts/${contractId}/fulfill`, { method: "POST" });

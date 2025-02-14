@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import MineAsteroids from "../quickstart/mineAsteroids/MineAsteroids";
 import * as api from "../api";
 import { ShipProvider } from "../context/ShipContext";
+import { AsteroidProvider } from "../context/AsteroidContext"
 
 vi.mock("../api", () => ({
   findEngineeredAsteroid: vi.fn(),
@@ -24,9 +25,11 @@ const mockShipData = {
 const renderComponent = (shipData = mockShipData) => {
   return render(
     <MemoryRouter>
-      <ShipProvider shipData={shipData}>
-        <MineAsteroids />
-      </ShipProvider>
+      <AsteroidProvider>
+        <ShipProvider shipData={shipData}>
+          <MineAsteroids />
+        </ShipProvider>
+      </AsteroidProvider>
     </MemoryRouter>
   );
 };

@@ -1,0 +1,22 @@
+.last-steps-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.success {
+  color: green;
+}
+
+.button-group {
+  margin-top: 20px;
+  button {
+    background-color: #3a86ff;
+  }
+}

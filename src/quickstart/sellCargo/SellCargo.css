@@ -1,0 +1,41 @@
+.sell-cargo-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sell-cargo-container h1, .sell-cargo-container h2 {
+  color: #f9fae7;
+}
+
+.sell-cargo-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sell-cargo-container li {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(44, 42, 42);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.sell-cargo-container button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.sell-cargo-container button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
