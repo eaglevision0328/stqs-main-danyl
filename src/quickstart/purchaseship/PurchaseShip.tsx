@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
-import { findShipyards, getAvailableShips, purchaseShip } from "../../api";
+import { findShipyards, getAvailableShips, purchaseShip } from "../../Helper/api";
 import { useNavigate } from "react-router-dom";
 import "./PurchaseShip.css";
 import { getAgentDetailsWithSystem } from "../../utils";
 import { useShip } from "../../context/ShipContext";
-import { shipsType } from "../../models/purchaseShip";
+import { Shipyard } from "../../models/purchaseShip";
 
 const PurchaseShip = () => {
   const [shipyards, setShipyards] = useState<any[]>([]);
   const [selectedShipyard, setSelectedShipyard] = useState<string | null>(null);
-  const [ships, setShips] = useState<shipsType | null>(null);
+  const [ships, setShips] = useState<Shipyard | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();

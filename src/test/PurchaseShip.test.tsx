@@ -2,12 +2,12 @@ import { it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import PurchaseShip from "../quickstart/purchaseship/PurchaseShip";
-import * as api from "../api";
+import * as api from "../Helper/api";
 import * as utils from "../utils";
 import { ShipProvider } from "../context/ShipContext";
 
 // Mock API module properly using `vi.mock`
-vi.mock("../api", () => ({
+vi.mock("../Helper/api", () => ({
   findShipyards: vi.fn(),
   getAvailableShips: vi.fn(),
   purchaseShip: vi.fn()

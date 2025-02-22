@@ -2,11 +2,11 @@ import { it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import MineAsteroids from "../quickstart/mineAsteroids/MineAsteroids";
-import * as api from "../api";
+import * as api from "../Helper/api";
 import { ShipProvider } from "../context/ShipContext";
 import { AsteroidProvider } from "../context/AsteroidContext"
 
-vi.mock("../api", () => ({
+vi.mock("../Helper/api", () => ({
   findEngineeredAsteroid: vi.fn(),
   setShipToOrbit: vi.fn(),
   navigateToAsteroid: vi.fn(),

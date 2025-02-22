@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { registerAgent, fetchStartingLocation, getToken, clearToken } from "../../api";
+import { registerAgent, fetchStartingLocation, getToken, clearToken } from "../../Helper/api";
 import { useNavigate } from "react-router-dom";
 import { getAgentDetailsWithSystem } from "../../utils";
+import { AgentData, Location } from "../../models/newGame";
 import "./NewGame.css";
 
 /**
@@ -14,8 +15,8 @@ function NewGame() {
   const [loading, setLoading] = useState(false);
   const [isLoadingAgent, setIsLoadingAgent] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [agent, setAgent] = useState<any>(null);
-  const [location, setLocation] = useState<any>(null);
+  const [agent, setAgent] = useState<AgentData | null>(null);
+  const [location, setLocation] = useState<Location | null>(null);
   const navigate = useNavigate();
 
   // Check if token exists & is still valid

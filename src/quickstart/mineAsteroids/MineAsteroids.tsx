@@ -6,7 +6,7 @@ import {
   dockShip,
   refuelShip,
   extractOres,
-} from "../../api";
+} from "../../Helper/api";
 import "./MineAsteroids.css";
 import { useShip } from "../../context/ShipContext";
 import { useAsteroid } from "../../context/AsteroidContext";

@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
-import { fetchMarketData, fetchShipCargo, dockShipSell, CargoShipSell } from "../../api";
+import { useEffect, useState } from "react";
+import { fetchMarketData, fetchShipCargo, dockShipSell, CargoShipSell } from "../../Helper/api";
 import { useShip } from "../../context/ShipContext";
 import { useAsteroid } from "../../context/AsteroidContext";
 import { MarketDataType, CargoType } from "../../models/sellCargo";

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { fetchContracts, acceptContract } from "../../api";
+import { fetchContracts, acceptContract } from "../../Helper/api";
 import { useNavigate } from "react-router-dom";
+import { Contract, ContractDeliver } from "../../models/firstMission";
 import "./FirstMission.css";
 
 const FirstMission = () => {
-  const [contracts, setContracts] = useState<any[]>([]);
+  const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedContract, setSelectedContract] = useState<string | null>(null);
@@ -61,7 +62,7 @@ const FirstMission = () => {
                 <p><strong>Status:</strong> {contract.accepted ? "Accepted" : "Pending"}</p>
                 <h3>Contract Terms:</h3>
                 <ul>
-                  {contract.terms.deliver.map((term: any, index: number) => (
+                  {contract.terms.deliver.map((term: ContractDeliver, index: number) => (
                     <li key={index}>
                       Deliver <strong>{term.unitsRequired}</strong> {term.tradeSymbol} to {term.destinationSymbol}
                     </li>

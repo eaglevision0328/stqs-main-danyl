@@ -2,9 +2,9 @@ import { it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import FirstMission from "../quickstart/firstmission/FirstMission";
-import * as api from "../api";
+import * as api from "../Helper/api";
 
-vi.mock("../api", () => ({
+vi.mock("../Helper/api", () => ({
   fetchContracts: vi.fn(),
   acceptContract: vi.fn(),
 }));

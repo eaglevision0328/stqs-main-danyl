@@ -1,4 +1,4 @@
-import { fetchAgentDetails } from "./api";
+import { fetchAgentDetails } from "./Helper/api";
 
 export const getAgentDetailsWithSystem = async () => {
   try {
